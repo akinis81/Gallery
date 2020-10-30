@@ -39,11 +39,12 @@ class Logic {
                                         <img src="./img/${this.gallerydata[i].photo}" alt="Gallery photo">
                                     </div>
                                     <div class="text">
-                                        <h5>${this.gallerydata[i].photo}
-                                        <div class="onTop"></div>
-                                       
+                                        <h5>${this.gallerydata[i].add}
+                                            <div class="onTop"></div>
                                         </h5>
-                                        <ul>${this.gallerydata[i].categories[0]} </ul>
+                                        <ul>${this.gallerydata[i].categories[0]} 
+                                        <div class="onTopLine"></div>
+                                        </ul>
                                     </div>
                                 </div>`
             }
