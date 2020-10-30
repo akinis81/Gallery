@@ -18,6 +18,7 @@ class Logic {
             }
         }
         let unique = [...new Set(items)];
+        unique = unique.sort(); 
         
         let filterHtml = '<div class="filterItem active"  data-categories="all">All</div>';
             filterHtml += `<div class="dot">*</div>`

@@ -1,7 +1,7 @@
 const gallerydata = [
     {
         photo:'1.jpg',
-        categories:['seo', 'Webdesign'], 
+        categories:['Wordpress'], 
         add:'Studio & Art'
     },
     {
