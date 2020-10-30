@@ -142,6 +142,7 @@ header {
       opacity: 0;
     }
 
+  
     .primary:hover > .text{
       background-color: #0008;
       transition: all 0.7s;
@@ -163,11 +164,47 @@ header {
 
    
         h5, ul {
-          width: 80%;  
+          width: 51%;  
+          height: 30px;
         }
 
         ul {
           opacity: 0.5;
         }
 
+        h5{
+          /* display: inline-block; */
+          /* float: right; */
+        }
+
+        .onTop{
+          position: absolute;
+          display: inline-block;
+          top: 19.5px;
+          right: 0px;
+          height: 20px;
+          background-color: white;
+          width: 0%;
+          /* transition: all 0.5s; */
+        }
+
+        .primary:hover .onTop{
+          /* width: 50%; */
+          /* transition: all 0.5s; */
+          animation-name:  onTopHover;
+          animation-duration: 1s;
+        }
+
+      @keyframes onTopHover{
+        0% {
+          width: 0%
+        }
+
+        100% {
+          width: 50%
+        }
+      }
+
+    
+        
 
