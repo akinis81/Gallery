@@ -289,6 +289,7 @@ header {
             margin-left: 20px;
           }
 
+        
           
       
         
@@ -353,7 +354,7 @@ header {
       
       
   @media (max-width:665px){
-
+  
         .list .primary {
           width: 50%;
         }
@@ -417,14 +418,13 @@ header {
     }
         }
 
-        @media (max-width:600px){
-          .filterItem:nth-last-of-type() {
-            margin-right: 20px;
-          }
-
-        }
-
+     
       @media (max-width:600px){
+    
+        .filterItem:nth-last-child(1) {
+          margin-right: 20px;
+        }
+    
   
         @keyframes onTopLine{
           0% {
