@@ -171,7 +171,7 @@ header {
         }
 
         ul {
-          color: #898989;
+          color: #c0c0c0;
         }
 
 
@@ -273,8 +273,13 @@ header {
         
         
         .list .primary {
-          width: 100%;
+          width: 50%;
         }
+
+        .text{
+          font-size: 14px;
+        }
+  
 
           .dot{
             display: none;
@@ -283,69 +288,10 @@ header {
           .dot + .filterItem {
             margin-left: 20px;
           }
+
+          
       
         
-        @keyframes onTopLine{
-          0% {
-            width: 0%
-          }
-          50% {
-            width: 20%;
-            right: 0%;
-          }
-          100% {
-            width: 0%;
-            right: 20%;
-          }
-        }
-
-      @keyframes onTopLineHover{
-        0%{
-          width: 0%;
-          right: 20%;
-        }
-        50%{
-          width: 20%;
-          right: 0%;
-        }
-        100% {
-          width: 0%
-        }
-      }
-
-
-      @keyframes onTop{
-        0%{
-          width: 0%;
-          right: 30%;
-        }
-        50%{
-          width: 30%;
-          right: 0%;
-        }
-        100% {
-          width: 0%
-        }
-      }
-
-
-    @keyframes onTopHover{
-      0% {
-        width: 0%
-      }
-      50% {
-        width: 30%;
-        right: 0%;
-      }
-      100% {
-        width: 0%;
-        right: 30%;
-      }
-    }
-  }
-      
-      
-      @media (max-width:665px){
         @keyframes onTopLine{
           0% {
             width: 0%
@@ -378,10 +324,10 @@ header {
       @keyframes onTop{
         0%{
           width: 0%;
-          right: 45%;
+          right: 50%;
         }
         50%{
-          width: 45%;
+          width: 50%;
           right: 0%;
         }
         100% {
@@ -395,17 +341,158 @@ header {
         width: 0%
       }
       50% {
-        width: 45%;
+        width: 50%;
         right: 0%;
       }
       100% {
         width: 0%;
-        right: 45%;
+        right: 50%;
+      }
+    }
+  }
+      
+      
+  @media (max-width:665px){
+
+        .list .primary {
+          width: 50%;
+        }
+
+        @keyframes onTopLine{
+          0% {
+            width: 0%
+          }
+          50% {
+            width: 30%;
+            right: 0%;
+          }
+          100% {
+            width: 0%;
+            right: 30%;
+          }
+        }
+
+      @keyframes onTopLineHover{
+        0%{
+          width: 0%;
+          right: 30%;
+        }
+        50%{
+          width: 30%;
+          right: 0%;
+        }
+        100% {
+          width: 0%
+        }
+      }
+
+
+      @keyframes onTop{
+        0%{
+          width: 0%;
+          right: 65%;
+        }
+        50%{
+          width: 65%;
+          right: 0%;
+        }
+        100% {
+          width: 0%
+        }
+      }
+
+
+    @keyframes onTopHover{
+      0% {
+        width: 0%
+      }
+      50% {
+        width: 65%;
+        right: 0%;
+      }
+      100% {
+        width: 0%;
+        right: 65%;
       }
     }
         }
-        
+
+        @media (max-width:600px){
+          .filterItem:nth-last-of-type() {
+            margin-right: 20px;
+          }
+
+        }
+
+      @media (max-width:600px){
+  
+        @keyframes onTopLine{
+          0% {
+            width: 0%
+          }
+          50% {
+            width: 40%;
+            right: 0%;
+          }
+          100% {
+            width: 0%;
+            right: 40%;
+          }
+        }
+
+      @keyframes onTopLineHover{
+        0%{
+          width: 0%;
+          right: 40%;
+        }
+        50%{
+          width: 40%;
+          right: 0%;
+        }
+        100% {
+          width: 0%
+        }
+      }
+
+
+      @keyframes onTop{
+        0%{
+          width: 0%;
+          right: 60%;
+        }
+        50%{
+          width: 60%;
+          right: 0%;
+        }
+        100% {
+          width: 0%
+        }
+      }
+
+
+    @keyframes onTopHover{
+      0% {
+        width: 0%
+      }
+      50% {
+        width: 60%;
+        right: 0%;
+      }
+      100% {
+        width: 0%;
+        right: 60%;
+      }
+    } 
+
+
+
+
+      }  
       @media (max-width:470px){
+        .list .primary {
+          width: 100%;
+        }
+
       
       .text{
         font-size: 15px;
