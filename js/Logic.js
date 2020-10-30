@@ -19,7 +19,7 @@ class Logic {
         }
         let unique = [...new Set(items)];
         
-        let filterHtml = '<div class="filterItem active"  data-categories="all">ALL</div>';
+        let filterHtml = '<div class="filterItem active"  data-categories="all">All</div>';
             filterHtml += `<div class="dot">*</div>`
         // for (const iterator of unique) {
         for (let iterator = 0; iterator < unique.length; iterator++) {
