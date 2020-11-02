@@ -1,11 +1,13 @@
 class Logic {
     constructor(gallerydata){
         this.gallerydata = gallerydata;
+        // this.objImageModal = new ImageModal(this.gallerydata);
         this.init();
     }
     
     init(){
         this.generateHtml();
+        this.modalImage();
     }
 
     generateHtml(){
@@ -37,7 +39,7 @@ class Logic {
             for (let i = 0; i < this.gallerydata.length ; i++) {
                 imagehtml +=   `<div class="primary">
                                     <div class="single">
-                                        <img src="./img/${this.gallerydata[i].photo}" alt="Gallery photo">
+                                        <img class="image" src="./img/${this.gallerydata[i].photo}" alt="Gallery photo" data-image="${i}">
                                     </div>
                                     <div class="text">
                                         <h5>${this.gallerydata[i].add}
@@ -49,6 +51,8 @@ class Logic {
                                     </div>
                                 </div>`
             }
+
+
 
         document.querySelector('.list').insertAdjacentHTML('afterbegin',imagehtml);
         const singlePhoto = document.querySelectorAll('.primary');
@@ -77,6 +81,56 @@ class Logic {
             });
         }
        
+    }
+    modalImage(){
+        const image = document.querySelectorAll('.image')
+        const text = document.querySelectorAll('.text')
+        const myModal = document.getElementById('myModal'); 
+        let modalImage = document.getElementById('modalImage');
+        let activeImage = 0;
+        for (let j = 0; j < image.length; j++) {
+            text[j].addEventListener('click', ()=>{
+                console.log('spausdina');
+               myModal.style.display = 'block';
+            //    modalImage.src = image[j].src;  
+               modalImage.src = `./img/${this.gallerydata[j].photo}`;  
+               activeImage = image[j].dataset.image;
+            //    console.log(image[j].dataset.image);
+            })
+            
+        }
+
+        const closeBtn = document.querySelector('.close')
+        closeBtn.addEventListener('click', ()=>{
+            myModal.style.display = 'none';
+        }) 
+
+        const right = document.querySelector('.right')
+        right.addEventListener('click', ()=>{
+            activeImage = parseInt(activeImage) + 1;
+            if (activeImage < image.length){ 
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
+            } else{
+                activeImage=0;
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
+            }
+        })
+
+        const left = document.querySelector('.left')
+        left.addEventListener('click', ()=>{
+            console.log(`pries salyga ${activeImage}`);
+            activeImage = parseInt(activeImage) - 1;
+            
+            if (activeImage > -1){ 
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
+                console.log(`kai true ${activeImage}`);
+            } else{
+                activeImage= image.length-1;
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
+                console.log(`kai false ${activeImage}`);
+            }
+        })
+        
     }
 }
 
