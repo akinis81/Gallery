@@ -5,12 +5,12 @@
     z-index: 1;
     padding-top: 50px;
     top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     background-color: grey;  
     opacity: 1; 
-    overflow: auto;
+    /* overflow: auto; */
 }
 
     .modal-content{
@@ -73,5 +73,20 @@
           width: 95%;
         }
       }
+
+    
+      @media (orientation: landscape) and (max-width:800px) {
+        .modal {
+            padding-top: 0px;
+        }
+      }
+
+      @media (orientation: portrait) and (max-width:450px) {
+        .modal {
+            padding-top: 200px;
+        }
+      }
+      
+      
 
 
