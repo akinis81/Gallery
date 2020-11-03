@@ -1,13 +1,15 @@
 class Logic {
     constructor(gallerydata){
         this.gallerydata = gallerydata;
-        // this.objImageModal = new ImageModal(this.gallerydata);
+        this.ClickedItemGlobal;
+        this.imagesCount;
         this.init();
     }
     
     init(){
         this.generateHtml();
         this.modalImage();
+        this.imageSearch();
     }
 
     generateHtml(){
@@ -21,10 +23,8 @@ class Logic {
         }
         let unique = [...new Set(items)];
         unique = unique.sort(); 
-        
         let filterHtml = '<div class="filterItem active"  data-categories="all">All</div>';
             filterHtml += `<div class="dot">*</div>`
-        // for (const iterator of unique) {
         for (let iterator = 0; iterator < unique.length; iterator++) {
             filterHtml +=  `<div class="filterItem"  data-categories="${unique[iterator]}">${unique[iterator].charAt(0).toUpperCase() + unique[iterator].slice(1)}</div>` 
             if (iterator < unique.length-1){
@@ -61,6 +61,8 @@ class Logic {
         for (let j = 0; j < categoriesFilter.length; j++) {
             categoriesFilter[j].addEventListener('click', () =>{
                 const ClickedItem = categoriesFilter[j].dataset.categories;
+                this.ClickedItemGlobal = ClickedItem;
+                this.imageSearch();
 
                 const activeFilterItem = document.querySelector(".filterItem.active");
                 activeFilterItem.classList.remove('active');
@@ -90,12 +92,9 @@ class Logic {
         let activeImage = 0;
         for (let j = 0; j < image.length; j++) {
             text[j].addEventListener('click', ()=>{
-                console.log('spausdina');
                myModal.style.display = 'block';
-            //    modalImage.src = image[j].src;  
                modalImage.src = `./img/${this.gallerydata[j].photo}`;  
                activeImage = image[j].dataset.image;
-            //    console.log(image[j].dataset.image);
             })
             
         }
@@ -107,31 +106,66 @@ class Logic {
 
         const right = document.querySelector('.right')
         right.addEventListener('click', ()=>{
-            activeImage = parseInt(activeImage) + 1;
-            if (activeImage < image.length){ 
-                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
+            if(this.imagesCount.length < 1 || this.imagesCount == undefined){
+                this.ClickedItemGlobal ='all';
+                this.imageSearch();
+            }
+            let index = 0;
+            for (let b = 0; b < this.imagesCount.length; b++) {
+                if (parseInt(activeImage)===this.imagesCount[b]) {
+                index = b;
+                }
+            }
+            index++;
+            if ( index < this.imagesCount.length){
+                activeImage = this.imagesCount[index];
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`;
             } else{
-                activeImage=0;
+                index = 0;
+                activeImage = this.imagesCount[index];
                 modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
             }
+
         })
 
         const left = document.querySelector('.left')
         left.addEventListener('click', ()=>{
-            console.log(`pries salyga ${activeImage}`);
-            activeImage = parseInt(activeImage) - 1;
-            
-            if (activeImage > -1){ 
-                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
-                console.log(`kai true ${activeImage}`);
+
+            if(this.imagesCount.length < 1 || this.imagesCount == undefined){
+                this.ClickedItemGlobal ='all';
+                this.imageSearch();
+            }
+            let index = 0;
+            for (let b = 0; b < this.imagesCount.length; b++) {
+                if (parseInt(activeImage)===this.imagesCount[b]) {
+                index = b;
+                }
+            }
+            index--;
+            if ( index > -1){
+                activeImage = this.imagesCount[index];
+                modalImage.src = `./img/${this.gallerydata[activeImage].photo}`;
             } else{
-                activeImage= image.length-1;
+                index = this.imagesCount.length-1;
+                activeImage = this.imagesCount[index];
                 modalImage.src = `./img/${this.gallerydata[activeImage].photo}`
-                console.log(`kai false ${activeImage}`);
             }
         })
         
     }
-}
 
-export {Logic}
+    imageSearch(){
+        this.imagesCount = [];
+        for (let t = 0; t < this.gallerydata.length; t++) {
+               for (let l = 0; l <this.gallerydata[t].categories.length; l++) {
+                if (this.gallerydata[t].categories[l].toLowerCase() === this.ClickedItemGlobal ){
+                    this.imagesCount.push(t);
+                } 
+            }
+            if (this.ClickedItemGlobal === 'all'){
+                this.imagesCount.push(t);
+            }
+        }
+    }
+}
+export {Logic}  
